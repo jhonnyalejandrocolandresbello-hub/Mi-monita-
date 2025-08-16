@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Te amo mi monita 🤎</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+    }
+
+    .mensaje {
+      position: absolute;
+      font-size: 24px;
+      color: #ffccff;
+      white-space: nowrap;
+      animation: caer 6s linear infinite;
+    }
+
+    .corazon {
+      position: absolute;
+      font-size: 30px;
+      color: red;
+      animation: caer 5s linear infinite;
+    }
+
+    @keyframes caer {
+      0% { transform: translateY(-10%); opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function crearElemento(texto, clase) {
+      const elem = document.createElement("div");
+      elem.className = clase;
+      elem.innerText = texto;
+      elem.style.left = Math.random() * window.innerWidth + "px";
+      elem.style.top = "-50px";
+      document.body.appendChild(elem);
+
+      setTimeout(() => elem.remove(), 6000);
+    }
+
+    // Lluvia automática de "Te amo mi monita 🤎" y corazones
+    setInterval(() => {
+      crearElemento("Te amo mi monita 🤎", "mensaje");
+      if (Math.random() < 0.5) {
+        crearElemento("🤎", "corazon");
+      }
+    }, 1000);
+
+    // Cada vez que ella toque/click saldrá "Te adoro mi princesita bella"
+    document.body.addEventListener("click", () => {
+      crearElemento("Te adoro mi princesita bella 💕", "mensaje");
+    });
+  </script>
+</body>
+</html>
